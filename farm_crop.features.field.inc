@@ -647,6 +647,290 @@ function farm_crop_field_default_fields() {
     ),
   );
 
+  // Exported field: 'log-farm_planting_location-field_farm_area'.
+  $fields['log-farm_planting_location-field_farm_area'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_farm_area',
+      'foreign keys' => array(
+        'tid' => array(
+          'columns' => array(
+            'tid' => 'tid',
+          ),
+          'table' => 'taxonomy_term_data',
+        ),
+      ),
+      'indexes' => array(
+        'tid' => array(
+          0 => 'tid',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'taxonomy',
+      'settings' => array(
+        'allowed_values' => array(
+          0 => array(
+            'vocabulary' => 'farm_areas',
+            'parent' => '0',
+          ),
+        ),
+      ),
+      'translatable' => '0',
+      'type' => 'taxonomy_term_reference',
+    ),
+    'field_instance' => array(
+      'bundle' => 'farm_planting_location',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => 'Enter the area in which this planting resides. As you type, you will have the option of selecting from areas that you\'ve entered in the past.',
+      'display' => array(
+        'default' => array(
+          'label' => 'inline',
+          'module' => 'taxonomy',
+          'settings' => array(),
+          'type' => 'taxonomy_term_reference_link',
+          'weight' => '0',
+        ),
+      ),
+      'entity_type' => 'log',
+      'field_name' => 'field_farm_area',
+      'label' => 'Area',
+      'required' => 1,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 0,
+        'module' => 'taxonomy',
+        'settings' => array(
+          'autocomplete_path' => 'taxonomy/autocomplete',
+          'size' => 60,
+        ),
+        'type' => 'taxonomy_autocomplete',
+        'weight' => '1',
+      ),
+    ),
+  );
+
+  // Exported field: 'log-farm_planting_location-field_farm_planting'.
+  $fields['log-farm_planting_location-field_farm_planting'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_farm_planting',
+      'foreign keys' => array(
+        'farm_asset' => array(
+          'columns' => array(
+            'target_id' => 'id',
+          ),
+          'table' => 'farm_asset',
+        ),
+      ),
+      'indexes' => array(
+        'target_id' => array(
+          0 => 'target_id',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'entityreference',
+      'settings' => array(
+        'handler' => 'base',
+        'handler_settings' => array(
+          'behaviors' => array(
+            'views-select-list' => array(
+              'status' => 0,
+            ),
+          ),
+          'sort' => array(
+            'type' => 'none',
+          ),
+          'target_bundles' => array(
+            'planting' => 'planting',
+          ),
+        ),
+        'target_type' => 'farm_asset',
+      ),
+      'translatable' => '0',
+      'type' => 'entityreference',
+    ),
+    'field_instance' => array(
+      'bundle' => 'farm_planting_location',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => 'Select the planting that this location pertains to.',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'entityreference',
+          'settings' => array(
+            'link' => FALSE,
+          ),
+          'type' => 'entityreference_label',
+          'weight' => 3,
+        ),
+      ),
+      'entity_type' => 'log',
+      'field_name' => 'field_farm_planting',
+      'label' => 'Planting',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'entityreference',
+        'settings' => array(
+          'match_operator' => 'CONTAINS',
+          'path' => '',
+          'size' => '60',
+        ),
+        'type' => 'entityreference_autocomplete',
+        'weight' => '0',
+      ),
+    ),
+  );
+
+  // Exported field: 'log-farm_planting_location-field_farm_planting_date_range'.
+  $fields['log-farm_planting_location-field_farm_planting_date_range'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_farm_planting_date_range',
+      'foreign keys' => array(),
+      'indexes' => array(),
+      'locked' => '0',
+      'module' => 'date',
+      'settings' => array(
+        'cache_count' => '4',
+        'cache_enabled' => 0,
+        'granularity' => array(
+          'day' => 'day',
+          'hour' => 0,
+          'minute' => 0,
+          'month' => 'month',
+          'second' => 0,
+          'year' => 'year',
+        ),
+        'repeat' => '0',
+        'timezone_db' => '',
+        'todate' => 'optional',
+        'tz_handling' => 'none',
+      ),
+      'translatable' => '0',
+      'type' => 'datestamp',
+    ),
+    'field_instance' => array(
+      'bundle' => 'farm_planting_location',
+      'deleted' => '0',
+      'description' => 'When was the planting at this location? If the end date is left blank, it will be assumed that the planting is still there.',
+      'display' => array(
+        'default' => array(
+          'label' => 'inline',
+          'module' => 'date',
+          'settings' => array(
+            'format_type' => 'long',
+            'fromto' => 'both',
+            'multiple_from' => '',
+            'multiple_number' => '',
+            'multiple_to' => '',
+            'show_repeat_rule' => 'show',
+          ),
+          'type' => 'date_default',
+          'weight' => '2',
+        ),
+      ),
+      'entity_type' => 'log',
+      'field_name' => 'field_farm_planting_date_range',
+      'label' => 'Date range',
+      'required' => 1,
+      'settings' => array(
+        'default_value' => 'now',
+        'default_value2' => 'blank',
+        'default_value_code' => '',
+        'default_value_code2' => '',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'date',
+        'settings' => array(
+          'increment' => '15',
+          'input_format' => 'M j Y - g:i:sa',
+          'input_format_custom' => '',
+          'label_position' => 'above',
+          'repeat_collapsed' => 0,
+          'text_parts' => array(),
+          'year_range' => '-3:+3',
+        ),
+        'type' => 'date_popup',
+        'weight' => '3',
+      ),
+    ),
+  );
+
+  // Exported field: 'log-farm_planting_location-field_farm_quantity'.
+  $fields['log-farm_planting_location-field_farm_quantity'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_farm_quantity',
+      'foreign keys' => array(),
+      'indexes' => array(
+        'revision_id' => array(
+          0 => 'revision_id',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'field_collection',
+      'settings' => array(
+        'hide_blank_items' => 1,
+        'path' => '',
+      ),
+      'translatable' => '0',
+      'type' => 'field_collection',
+    ),
+    'field_instance' => array(
+      'bundle' => 'farm_planting_location',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => 'Describe the quantity of this planting, using a value and a unit of measurement. For example, if you seeded 10 flats of lettuce, enter "10" in the Value field, and "flats" in the Units field. As you type the unit, you will have the option of selecting from units that you\'ve entered in the past.',
+      'display' => array(
+        'default' => array(
+          'label' => 'inline',
+          'module' => 'field_collection',
+          'settings' => array(
+            'view_mode' => 'full',
+          ),
+          'type' => 'field_collection_fields',
+          'weight' => '1',
+        ),
+      ),
+      'entity_type' => 'log',
+      'field_name' => 'field_farm_quantity',
+      'label' => 'Quantity',
+      'required' => 1,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 0,
+        'module' => 'field_collection',
+        'settings' => array(),
+        'type' => 'field_collection_embed',
+        'weight' => '2',
+      ),
+    ),
+  );
+
   // Exported field: 'taxonomy_term-farm_crops-field_farm_companions'.
   $fields['taxonomy_term-farm_crops-field_farm_companions'] = array(
     'field_config' => array(
@@ -1007,8 +1291,10 @@ function farm_crop_field_default_fields() {
   t('Images');
   t('Location');
   t('Notes');
+  t('Planting');
   t('Quantity');
   t('Season');
+  t('Select the planting that this location pertains to.');
   t('Use this field to attach files to this planting record.');
   t('Use this field to attach image files to this planting record.');
   t('When was the planting at this location? If the end date is left blank, it will be assumed that the planting is still there.');

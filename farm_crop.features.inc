@@ -38,3 +38,19 @@ function farm_crop_default_farm_asset_type() {
   }');
   return $items;
 }
+
+/**
+ * Implements hook_default_log_type().
+ */
+function farm_crop_default_log_type() {
+  $items = array();
+  $items['farm_planting_location'] = entity_import('log_type', '{
+    "type" : "farm_planting_location",
+    "label" : "Planting Location",
+    "weight" : 0,
+    "name_pattern" : "[log:field-farm-planting] [log:field-farm-quantity] [log:field-farm-area]",
+    "name_edit" : "0",
+    "rdf_mapping" : []
+  }');
+  return $items;
+}
